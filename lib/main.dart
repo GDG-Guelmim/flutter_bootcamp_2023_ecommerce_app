@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Ecommerce',
       theme: ThemeData(
         primarySwatch: Colors.orange,
+        fontFamily: "Ubuntu",
       ),
       home: const SigninScreen(),
     );

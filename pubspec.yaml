@@ -60,6 +60,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/icons/
+
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
@@ -86,6 +89,33 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/ubuntu/Ubuntu-Regular.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/ubuntu/Ubuntu-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/ubuntu/Ubuntu-MediumItalic.ttf
+          weight: 500
+          style: italic
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/muli/Muli.ttf
+        - asset: assets/fonts/muli/Muli-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/muli/Muli-Light.ttf
+          weight: 300
   #
+
+  # fonts:
+  #   - family: Muli
+  #     fonts:
+  #       - asset: assets/fonts/muli/Muli.ttf
+  #       - asset: assets/fonts/muli/Muli-Bold.ttf
+  #         weight: 700
+  #       - asset: assets/fonts/muli/Muli-Light.ttf
+  #         weight: 300
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
