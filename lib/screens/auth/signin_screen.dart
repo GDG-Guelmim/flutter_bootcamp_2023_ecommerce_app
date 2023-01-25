@@ -115,7 +115,7 @@ class SigninScreen extends StatelessWidget {
                   onPressed: printSalam,
                   child: Text('Continue'),
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.orange,
+                    backgroundColor: Color(0xfff77546),
                     foregroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(
                       horizontal: 130,
@@ -135,28 +135,34 @@ class SigninScreen extends StatelessWidget {
                     Container(
                       width: 35,
                       height: 35,
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.grey,
+                        color: Color(0xffeeeff1),
                       ),
+                      child: Image.asset("assets/icons/google.png"),
                     ),
                     SizedBox(width: 10),
                     Container(
                       width: 35,
                       height: 35,
+                      padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.grey,
+                        color: Color(0xffeeeff1),
                       ),
+                      child: Image.asset("assets/icons/facebook.png"),
                     ),
                     SizedBox(width: 10),
                     Container(
                       width: 35,
                       height: 35,
+                      padding: EdgeInsets.all(9),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.grey,
+                        color: Color(0xffeeeff1),
                       ),
+                      child: Image.asset("assets/icons/twitter.png"),
                     ),
                   ],
                 ),
