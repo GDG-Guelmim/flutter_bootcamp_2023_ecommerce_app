@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SigninScreen extends StatelessWidget {
   const SigninScreen({super.key});
@@ -135,12 +136,17 @@ class SigninScreen extends StatelessWidget {
                     Container(
                       width: 35,
                       height: 35,
-                      padding: EdgeInsets.all(10),
+                      // padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xffeeeff1),
                       ),
-                      child: Image.asset("assets/icons/google.png"),
+                      alignment: Alignment.center,
+                      child: SvgPicture.asset(
+                        "assets/icons/google.svg",
+                        width: 25,
+                        height: 25,
+                      ),
                     ),
                     SizedBox(width: 10),
                     Container(
