@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Ubuntu",
       ),
       // home: const SigninScreen(),
-      initialRoute: "/signin",
+      initialRoute: "/home",
       routes: {
         "/signin": (context) => const SigninScreen(),
         "/signup": (context) => const SignupScreen(),
