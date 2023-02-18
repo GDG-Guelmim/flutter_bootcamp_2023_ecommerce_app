@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../enums/menu_state.dart';
 import 'widgets/cashback.dart';
 import 'widgets/categories.dart';
 import 'widgets/custom_app_bar.dart';
+import 'widgets/custom_nav_bar.dart';
+import 'widgets/popular_products.dart';
 import 'widgets/special_offers.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,17 +22,13 @@ class HomeScreen extends StatelessWidget {
               CashBack(),
               Categories(),
               SpecialOffers(),
-              // PopularProducts(),
-
-              // here is the popular product section images paths
-              // "assets/images/ps4_console_white_1.png",
-              // "assets/images/Image Popular Product 2.png",
-              // "assets/images/glap.png",
-              // "assets/images/wireless headset.png",
+              PopularProducts(),
             ],
           ),
         ),
       ),
+      bottomNavigationBar:
+          const CustomBottomNavBar(selectedMenu: MenuState.home),
     );
   }
 }
