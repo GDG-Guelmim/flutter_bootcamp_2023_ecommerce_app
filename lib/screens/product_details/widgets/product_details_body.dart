@@ -3,7 +3,7 @@ import 'package:ecommerce/screens/product_details/widgets/top_rounded_corners.da
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'color_dots.dart';
+import 'product_customisation.dart';
 
 class ProductDetailsBody extends StatelessWidget {
   final ProductModel product;
@@ -66,7 +66,7 @@ class ProductDetailsBody extends StatelessWidget {
               child: Row(
                 children: const [
                   Text(
-                    "See More Detail",
+                    "See More Details",
                     style: TextStyle(
                       color: Color(0xfff77547),
                     ),
@@ -84,7 +84,7 @@ class ProductDetailsBody extends StatelessWidget {
               color: const Color(0xFFF6F7F9),
               child: Column(
                 children: [
-                  ColorDots(product: product),
+                  ProductCustomisation(product: product),
                   TopRoundedCorners(
                     color: Colors.white,
                     child: Padding(
@@ -97,7 +97,7 @@ class ProductDetailsBody extends StatelessWidget {
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
-                            primary: Colors.white,
+                            foregroundColor: Colors.white,
                             backgroundColor: Colors.orange,
                           ),
                           onPressed: () {},

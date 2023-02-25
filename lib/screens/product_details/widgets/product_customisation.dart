@@ -1,11 +1,11 @@
 import 'package:ecommerce/models/product_model.dart';
 import 'package:flutter/material.dart';
 
-int tempSelected = 0;
+int colorSelected = 0;
 int tempQuantity = 0;
 
-class ColorDots extends StatefulWidget {
-  const ColorDots({
+class ProductCustomisation extends StatefulWidget {
+  const ProductCustomisation({
     Key? key,
     required this.product,
   }) : super(key: key);
@@ -13,14 +13,14 @@ class ColorDots extends StatefulWidget {
   final ProductModel product;
 
   @override
-  State<ColorDots> createState() => _ColorDotsState();
+  State<ProductCustomisation> createState() => _ProductCustomisationState();
 }
 
-class _ColorDotsState extends State<ColorDots> {
+class _ProductCustomisationState extends State<ProductCustomisation> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: const EdgeInsets.all(20),
       child: Row(
         children: [
           ...List.generate(
@@ -28,11 +28,11 @@ class _ColorDotsState extends State<ColorDots> {
             (index) => InkWell(
               child: ColorDot(
                 color: widget.product.colors[index],
-                isSelected: index == tempSelected,
+                isSelected: index == colorSelected,
               ),
               onTap: () {
                 setState(() {
-                  tempSelected = index;
+                  colorSelected = index;
                 });
               },
             ),
@@ -142,7 +142,7 @@ class RoundedIconBtn extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           padding: EdgeInsets.zero,
-          primary: Colors.orange,
+          foregroundColor: Colors.orange,
           backgroundColor: Colors.white,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),

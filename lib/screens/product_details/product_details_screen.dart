@@ -26,8 +26,6 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 26),
           ProductDetailsBody(product: product),
-          // ProductCustomisation(),
-          // AddToCartButton(),
         ],
       ),
     );
