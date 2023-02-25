@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 
 class HeartIconButton extends StatelessWidget {
   final bool isFavorite;
+  final void Function()? onPressed;
 
   const HeartIconButton({
     Key? key,
     required this.isFavorite,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class HeartIconButton extends StatelessWidget {
       ),
       child: IconButton(
         padding: const EdgeInsets.all(0),
-        onPressed: () {},
+        onPressed: onPressed,
         icon: SvgPicture.asset(
           "assets/icons/Heart Icon_2.svg",
           color: isFavorite ? Colors.red : Colors.grey,

@@ -1,41 +1,39 @@
+import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:ecommerce/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-int colorSelected = 0;
-int tempQuantity = 0;
-
-class ProductCustomisation extends StatefulWidget {
+class ProductCustomisation extends StatelessWidget {
   const ProductCustomisation({
     Key? key,
     required this.product,
   }) : super(key: key);
 
   final ProductModel product;
-
-  @override
-  State<ProductCustomisation> createState() => _ProductCustomisationState();
-}
-
-class _ProductCustomisationState extends State<ProductCustomisation> {
   @override
   Widget build(BuildContext context) {
+    ProductController productController = Get.find<ProductController>();
+
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Row(
         children: [
           ...List.generate(
-            widget.product.colors.length,
-            (index) => InkWell(
-              child: ColorDot(
-                color: widget.product.colors[index],
-                isSelected: index == colorSelected,
-              ),
-              onTap: () {
-                setState(() {
-                  colorSelected = index;
-                });
-              },
-            ),
+            product.colors.length,
+            (index) => GetBuilder<ProductController>(
+                id: "color",
+                builder: (controller) {
+                  return InkWell(
+                    child: ColorDot(
+                      color: product.colors[index],
+                      isSelected: index == controller.colorSelected,
+                    ),
+                    onTap: () {
+                      controller.colorSelected = index;
+                      controller.update(["color"]);
+                    },
+                  );
+                }),
           ),
           const Spacer(),
           Row(
@@ -44,30 +42,26 @@ class _ProductCustomisationState extends State<ProductCustomisation> {
               RoundedIconBtn(
                 icon: Icons.remove,
                 press: () {
-                  if (tempQuantity > 0) {
-                    setState(() {
-                      tempQuantity--;
-                    });
-                  }
+                  productController.decrementQuantity();
                 },
               ),
               const SizedBox(width: 10),
-              Text(
-                tempQuantity.toString(),
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
+              GetBuilder<ProductController>(builder: (controller) {
+                return Text(
+                  controller.productQuantity.toString(),
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                );
+              }),
               const SizedBox(width: 10),
               RoundedIconBtn(
                 icon: Icons.add,
                 showShadow: true,
                 press: () {
-                  setState(() {
-                    tempQuantity++;
-                  });
+                  productController.incrementQuantity();
                 },
               ),
             ],

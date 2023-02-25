@@ -1,4 +1,6 @@
+import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../models/product_model.dart';
 import '../../product_details/product_details_screen.dart';
@@ -62,7 +64,14 @@ class PopularProductItem extends StatelessWidget {
                       fontSize: 17,
                     ),
                   ),
-                  HeartIconButton(isFavorite: popularProduct.isFavourite),
+                  GetBuilder<ProductController>(builder: (controller) {
+                    return HeartIconButton(
+                      isFavorite: popularProduct.isFavourite,
+                      onPressed: () {
+                        controller.toggleFavorite(popularProduct);
+                      },
+                    );
+                  }),
                 ],
               )
             ],
