@@ -3,6 +3,8 @@ import 'package:ecommerce/screens/product_details/widgets/top_rounded_corners.da
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'color_dots.dart';
+
 class ProductDetailsBody extends StatelessWidget {
   final ProductModel product;
   const ProductDetailsBody({super.key, required this.product});
@@ -80,12 +82,37 @@ class ProductDetailsBody extends StatelessWidget {
             ),
             TopRoundedCorners(
               color: const Color(0xFFF6F7F9),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Row(
-                  children: [],
-                ),
+              child: Column(
+                children: [
+                  ColorDots(product: product),
+                  TopRoundedCorners(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 20),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 56,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            primary: Colors.white,
+                            backgroundColor: Colors.orange,
+                          ),
+                          onPressed: () {},
+                          child: const Text(
+                            "Add To Cart",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
