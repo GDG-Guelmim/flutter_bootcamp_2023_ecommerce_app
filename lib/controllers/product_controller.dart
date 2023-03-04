@@ -7,6 +7,13 @@ class ProductController extends GetxController {
   int colorSelected = 0;
   int productQuantity = 0;
 
+  int _selectedImage = 0;
+  int get selectedImage => _selectedImage;
+  set selectedImage(int value) {
+    _selectedImage = value;
+    update();
+  }
+
   void incrementQuantity() {
     productQuantity++;
     update();
@@ -22,5 +29,9 @@ class ProductController extends GetxController {
   void toggleFavorite(ProductModel product) {
     product.isFavourite = !product.isFavourite;
     update();
+  }
+
+  void init() {
+    _selectedImage = 0;
   }
 }

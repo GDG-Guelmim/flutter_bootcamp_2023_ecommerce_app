@@ -1,3 +1,4 @@
+import 'package:ecommerce/controllers/expanded_text_controller.dart';
 import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:ecommerce/models/product_model.dart';
 import 'package:ecommerce/screens/product_details/widgets/top_rounded_corners.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/expanded_text.dart';
 import 'product_customisation.dart';
 
 class ProductDetailsBody extends StatelessWidget {
@@ -14,6 +16,7 @@ class ProductDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductController productController = Get.find<ProductController>();
+    ExpandedTextController textController = Get.find<ExpandedTextController>();
 
     return TopRoundedCorners(
       color: Colors.white,
@@ -63,33 +66,34 @@ class ProductDetailsBody extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20),
-              child: Text(
-                product.description,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  height: 1.8,
-                ),
-              ),
+              child: ExpandedText(text: product.description),
             ),
             const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.only(left: 20),
-              margin: const EdgeInsets.only(bottom: 30),
-              child: Row(
-                children: const [
-                  Text(
-                    "See More Details",
-                    style: TextStyle(
+            GestureDetector(
+              onTap: () {
+                textController.isExpanded = !textController.isExpanded;
+              },
+              child: Container(
+                padding: const EdgeInsets.only(left: 20),
+                margin: const EdgeInsets.only(bottom: 30),
+                child: Row(
+                  children: [
+                    GetBuilder<ExpandedTextController>(builder: (controller) {
+                      return Text(
+                        "See ${controller.isExpanded ? "less" : "more"} Details",
+                        style: const TextStyle(
+                          color: Color(0xfff77547),
+                        ),
+                      );
+                    }),
+                    const SizedBox(width: 8),
+                    const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 10,
                       color: Color(0xfff77547),
                     ),
-                  ),
-                  SizedBox(width: 8),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 10,
-                    color: Color(0xfff77547),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             TopRoundedCorners(

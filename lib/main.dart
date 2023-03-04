@@ -1,3 +1,4 @@
+import 'package:ecommerce/controllers/expanded_text_controller.dart';
 import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:ecommerce/screens/cart/cart_screen.dart';
 import 'package:ecommerce/screens/product_details/product_details_screen.dart';
@@ -10,6 +11,8 @@ import 'screens/home/home_screen.dart';
 
 void main() {
   Get.lazyPut(() => ProductController());
+  Get.lazyPut(() => ExpandedTextController());
+
   runApp(const MyApp());
 }
 
