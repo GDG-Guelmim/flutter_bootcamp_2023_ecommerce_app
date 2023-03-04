@@ -35,6 +35,7 @@ class ProductController extends GetxController {
 
   void init() {
     _selectedImage = 0;
+    productQuantity = 0;
   }
 
   void addToCart(ProductModel product) {

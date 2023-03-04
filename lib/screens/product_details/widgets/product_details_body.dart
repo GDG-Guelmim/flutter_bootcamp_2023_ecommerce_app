@@ -17,6 +17,7 @@ class ProductDetailsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     ProductController productController = Get.find<ProductController>();
     ExpandedTextController textController = Get.find<ExpandedTextController>();
+    productController.init();
 
     return TopRoundedCorners(
       color: Colors.white,
