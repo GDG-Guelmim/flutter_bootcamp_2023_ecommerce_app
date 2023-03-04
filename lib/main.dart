@@ -1,4 +1,5 @@
 import 'package:ecommerce/controllers/product_controller.dart';
+import 'package:ecommerce/screens/cart/cart_screen.dart';
 import 'package:ecommerce/screens/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         "/signup": (context) => const SignupScreen(),
         "/home": (context) => const HomeScreen(),
         "/product_details": (context) => const ProductDetailsScreen(),
+        "/cart": (context) => const CartScreen(),
       },
     );
   }

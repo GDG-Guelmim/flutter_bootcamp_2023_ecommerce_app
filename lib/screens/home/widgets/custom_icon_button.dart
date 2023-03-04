@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomIconButton extends StatelessWidget {
   final String iconPath;
+  final void Function()? onTap;
 
   const CustomIconButton({
     Key? key,
     required this.iconPath,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class CustomIconButton extends StatelessWidget {
       ),
       child: IconButton(
         padding: const EdgeInsets.all(0),
-        onPressed: () {},
+        onPressed: onTap,
         icon: SvgPicture.asset(iconPath),
       ),
     );
