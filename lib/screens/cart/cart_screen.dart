@@ -1,22 +1,20 @@
+import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../models/cart_model.dart';
 import 'widgets/cart_card.dart';
 import 'widgets/check_out_card.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
   static String routeName = "/cart";
 
   const CartScreen({super.key});
-
-  @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    ProductController productController = Get.find<ProductController>();
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -28,10 +26,12 @@ class _CartScreenState extends State<CartScreen> {
               "Your Cart",
               style: TextStyle(color: Colors.black),
             ),
-            Text(
-              "${cartItems.length} items",
-              style: Theme.of(context).textTheme.caption,
-            ),
+            GetBuilder<ProductController>(builder: (controller) {
+              return Text(
+                "${cartItems.length} items",
+                style: Theme.of(context).textTheme.caption,
+              );
+            }),
           ],
         ),
       ),
@@ -45,9 +45,9 @@ class _CartScreenState extends State<CartScreen> {
               key: Key(cartItems[index].product.id.toString()),
               direction: DismissDirection.endToStart,
               onDismissed: (direction) {
-                setState(() {
-                  cartItems.removeAt(index);
-                });
+                if (index <= cartItems.length) {
+                  productController.removeFromCart(cartItems[index]);
+                }
               },
               background: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

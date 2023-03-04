@@ -1,5 +1,7 @@
+import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
@@ -58,17 +60,20 @@ class CheckoutCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text.rich(
-                  TextSpan(
-                    text: "Total:\n",
-                    children: [
-                      TextSpan(
-                        text: "\$337.15",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
+                GetBuilder<ProductController>(builder: (controller) {
+                  return Text.rich(
+                    TextSpan(
+                      text: "Total:\n",
+                      children: [
+                        TextSpan(
+                          text: "\$${controller.getTotalPrice()}",
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
                 SizedBox(
                   width: 190,
                   child: SizedBox(

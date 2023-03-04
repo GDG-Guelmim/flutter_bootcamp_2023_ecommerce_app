@@ -116,7 +116,9 @@ class ProductDetailsBody extends StatelessWidget {
                             foregroundColor: Colors.white,
                             backgroundColor: Colors.orange,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            productController.addToCart(product);
+                          },
                           child: const Text(
                             "Add To Cart",
                             style: TextStyle(

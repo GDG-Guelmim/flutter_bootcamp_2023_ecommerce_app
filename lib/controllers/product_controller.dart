@@ -1,5 +1,7 @@
 import 'package:ecommerce/models/product_model.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+
+import '../models/cart_model.dart';
 
 class ProductController extends GetxController {
   int imageSelected = 0;
@@ -33,5 +35,29 @@ class ProductController extends GetxController {
 
   void init() {
     _selectedImage = 0;
+  }
+
+  void addToCart(ProductModel product) {
+    bool isAlreadyIn = false;
+    for (var element in cartItems) {
+      if (element.product.id == product.id) isAlreadyIn = true;
+    }
+    if (productQuantity > 0 && !isAlreadyIn) {
+      cartItems.add(CartModel(product: product, numOfItem: productQuantity));
+      Get.back();
+    }
+  }
+
+  void removeFromCart(CartModel cart) {
+    cartItems.remove(cart);
+    update();
+  }
+
+  String getTotalPrice() {
+    double value = 0;
+    for (CartModel element in cartItems) {
+      value += element.product.price * element.numOfItem;
+    }
+    return value.toStringAsFixed(2);
   }
 }
