@@ -8,10 +8,10 @@ class CashBack extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       height: 80,
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      padding: EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
-        color: Color(0xff4A3298),
+        color: const Color(0xff4A3298),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
@@ -25,8 +25,8 @@ class CashBack extends StatelessWidget {
               fontSize: 10,
             ),
           ),
-          SizedBox(height: 4),
-          Text(
+          const SizedBox(height: 4),
+          const Text(
             "Cashback 20%",
             style: TextStyle(
               color: Colors.white,

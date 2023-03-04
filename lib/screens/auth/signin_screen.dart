@@ -30,16 +30,16 @@ class _SigninScreenState extends State<SigninScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(35),
+          padding: const EdgeInsets.all(35),
           child: Form(
             key: formKey,
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Icon(
                         Icons.arrow_back_ios_new_rounded,
                         size: 16,
@@ -60,10 +60,10 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   ),
-                  Text(
+                  const Text(
                     'Welcome Back',
                     style: TextStyle(
                       color: Colors.black,
@@ -71,10 +71,10 @@ class _SigninScreenState extends State<SigninScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
-                  Text(
+                  const Text(
                     'Sign in with your email and password \nor continue with social media',
                     style: TextStyle(
                       color: Colors.grey,
@@ -83,7 +83,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   TextFormField(
                     onSaved: (String? newValue) {
                       email = newValue!;
@@ -107,16 +107,17 @@ class _SigninScreenState extends State<SigninScreen> {
                     },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 25),
                       labelText: "Email",
                       hintText: "Enter your email",
-                      suffixIcon: Icon(Icons.email_outlined),
+                      suffixIcon: const Icon(Icons.email_outlined),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
                     obscureText: !isVisible,
                     onSaved: (String? newValue) {
@@ -131,7 +132,8 @@ class _SigninScreenState extends State<SigninScreen> {
                     },
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 25),
                       labelText: "Password",
                       hintText: "Enter your password",
                       suffixIcon: IconButton(
@@ -148,12 +150,12 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: [
+                        children: const [
                           // Checkbox(
                           //   value: isChecked,
                           //   onChanged: changeCheckboxState,
@@ -167,7 +169,7 @@ class _SigninScreenState extends State<SigninScreen> {
                           ),
                         ],
                       ),
-                      Text(
+                      const Text(
                         'Forgot Password',
                         style: TextStyle(
                           decoration: TextDecoration.underline,
@@ -176,14 +178,13 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   TextButton(
                     onPressed: () => signIn(context),
-                    child: Text('Continue'),
                     style: TextButton.styleFrom(
-                      backgroundColor: Color(0xfff77546),
+                      backgroundColor: const Color(0xfff77546),
                       foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 130,
                         vertical: 16,
                       ),
@@ -191,8 +192,9 @@ class _SigninScreenState extends State<SigninScreen> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
+                    child: const Text('Continue'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   Row(
@@ -202,7 +204,7 @@ class _SigninScreenState extends State<SigninScreen> {
                         width: 35,
                         height: 35,
                         // padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color(0xffeeeff1),
                         ),
@@ -213,23 +215,23 @@ class _SigninScreenState extends State<SigninScreen> {
                           height: 25,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Container(
                         width: 35,
                         height: 35,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(8),
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color(0xffeeeff1),
                         ),
                         child: Image.asset("assets/icons/facebook.png"),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Container(
                         width: 35,
                         height: 35,
-                        padding: EdgeInsets.all(9),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(9),
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color(0xffeeeff1),
                         ),
@@ -237,12 +239,12 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 14,
                   ),
                   CentredRow(
                     children: [
-                      Text(
+                      const Text(
                         'Don\'t have an account? ',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -253,7 +255,7 @@ class _SigninScreenState extends State<SigninScreen> {
                         onTap: () {
                           Navigator.pushNamed(context, "/signup");
                         },
-                        child: Text(
+                        child: const Text(
                           'Sign Up',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -294,9 +296,9 @@ class _SigninScreenState extends State<SigninScreen> {
   void signIn(context) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      print(email);
-      print(password);
-      print(isChecked);
+      debugPrint(email);
+      debugPrint(password);
+      debugPrint(isChecked.toString());
       // call sign in API
       // if success
       // go to home screen
@@ -305,7 +307,7 @@ class _SigninScreenState extends State<SigninScreen> {
   }
 
   void changeCheckboxState(bool? value) {
-    print('changeCheckboxState: $value');
+    debugPrint('changeCheckboxState: $value');
     isChecked = value!;
   }
 }

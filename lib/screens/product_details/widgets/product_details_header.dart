@@ -18,11 +18,11 @@ class ProductDetailsHeader extends StatelessWidget {
             child: Container(
               width: 40,
               height: 40,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios_new_rounded,
                 size: 16,
                 color: Colors.grey,
@@ -30,7 +30,7 @@ class ProductDetailsHeader extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -39,12 +39,12 @@ class ProductDetailsHeader extends StatelessWidget {
               children: [
                 Text(
                   rating.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(width: 4),
-                Icon(
+                const SizedBox(width: 4),
+                const Icon(
                   Icons.star,
                   size: 16,
                   color: Colors.yellow,
