@@ -29,7 +29,7 @@ class CartScreen extends StatelessWidget {
             GetBuilder<ProductController>(builder: (controller) {
               return Text(
                 "${cartItems.length} items",
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodySmall,
               );
             }),
           ],

@@ -71,6 +71,7 @@ class ProductDetailsBody extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             GestureDetector(
+              behavior: HitTestBehavior.translucent,
               onTap: () {
                 textController.isExpanded = !textController.isExpanded;
               },
