@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../../../enums/menu_state.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -69,7 +71,9 @@ class CustomBottomNavBar extends StatelessWidget {
                     ? const Color(0xFFFF7643)
                     : inActiveIconColor,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.find<AuthController>().signOut(context);
+              },
             ),
           ],
         ),

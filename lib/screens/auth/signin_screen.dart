@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/auth_controller.dart';
 import 'widgets/centred_row.dart';
 
 var formKey = GlobalKey<FormState>();
@@ -26,6 +28,8 @@ class SigninScreen extends StatefulWidget {
 class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.find<AuthController>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -179,21 +183,25 @@ class _SigninScreenState extends State<SigninScreen> {
                     ],
                   ),
                   const SizedBox(height: 40),
-                  TextButton(
-                    onPressed: () => signIn(context),
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xfff77546),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 130,
-                        vertical: 16,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text('Continue'),
-                  ),
+                  GetBuilder<AuthController>(builder: (controller) {
+                    return controller.isLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : TextButton(
+                            onPressed: () => signIn(context, authController),
+                            style: TextButton.styleFrom(
+                              backgroundColor: const Color(0xfff77546),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 130,
+                                vertical: 16,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text('Continue'),
+                          );
+                  }),
                   const SizedBox(
                     height: 70,
                   ),
@@ -293,16 +301,21 @@ class _SigninScreenState extends State<SigninScreen> {
     );
   }
 
-  void signIn(context) {
+  void signIn(context, AuthController authController) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       debugPrint(email);
       debugPrint(password);
       debugPrint(isChecked.toString());
       // call sign in API
+      bool isSuccess = await authController.signIn(email, password);
       // if success
       // go to home screen
-      Navigator.pushNamed(context, "/home");
+      if (isSuccess) {
+        Navigator.pushReplacementNamed(context, "/home");
+      } else {
+        debugPrint("Sigin faild");
+      }
     }
   }
 

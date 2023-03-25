@@ -1,4 +1,6 @@
+import 'package:ecommerce/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 var formKey = GlobalKey<FormState>();
 String email = "", password = "", passwordConfirmation = "";
@@ -8,6 +10,8 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.find<AuthController>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -24,7 +28,9 @@ class SignupScreen extends StatelessWidget {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Navigator.pop(context);
+                            if (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            }
                           },
                           icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
@@ -142,21 +148,25 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  TextButton(
-                    onPressed: () => signUp(context),
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xfff77546),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 130,
-                        vertical: 16,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text('Continue'),
-                  ),
+                  GetBuilder<AuthController>(builder: (controller) {
+                    return controller.isLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : TextButton(
+                            onPressed: () => signUp(context, authController),
+                            style: TextButton.styleFrom(
+                              backgroundColor: const Color(0xfff77546),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 130,
+                                vertical: 16,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text('Continue'),
+                          );
+                  }),
                   const SizedBox(
                     height: 70,
                   ),
@@ -221,16 +231,21 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  void signUp(context) {
+  void signUp(context, AuthController authController) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       debugPrint(email);
       debugPrint(password);
       debugPrint(passwordConfirmation);
       // call sign up API
+      bool isSuccess = await authController.signUp(email, password);
       // if success
       // go to home screen
-      Navigator.pushNamed(context, "/home");
+      if (isSuccess) {
+        Navigator.pushReplacementNamed(context, "/home");
+      } else {
+        debugPrint("Sigup faild");
+      }
     }
   }
 }
