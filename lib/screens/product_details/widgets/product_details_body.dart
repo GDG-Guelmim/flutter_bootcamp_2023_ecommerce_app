@@ -41,9 +41,13 @@ class ProductDetailsBody extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 productController.toggleFavorite(product);
+                productController.borderValue =
+                    productController.borderValue == 20 ? 12 : 20;
               },
               child: GetBuilder<ProductController>(builder: (controller) {
-                return Container(
+                return AnimatedContainer(
+                  curve: Curves.elasticIn,
+                  duration: const Duration(milliseconds: 400),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   margin: const EdgeInsets.symmetric(vertical: 10),
@@ -51,9 +55,9 @@ class ProductDetailsBody extends StatelessWidget {
                     color: product.isFavourite
                         ? const Color(0xFFFFE6E6)
                         : const Color(0xFFF5F6F9),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
+                    borderRadius:  BorderRadius.only(
+                      topLeft: Radius.circular(productController.borderValue.toDouble()),
+                      bottomLeft: Radius.circular(productController.borderValue.toDouble()),
                     ),
                   ),
                   child: SvgPicture.asset(

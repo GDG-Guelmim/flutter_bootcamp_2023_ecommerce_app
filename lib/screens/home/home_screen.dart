@@ -1,4 +1,6 @@
+import 'package:ecommerce/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../enums/menu_state.dart';
@@ -14,8 +16,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getSavedData();
-    saveData();
+    // getSavedData();
+    // saveData();
+    // Get.find<HomeController>().insertCategoriesIntoFirebase();
+    // Get.find<HomeController>().uploadCategoriesIntoFirebaseStorage();
+    Get.find<HomeController>().getCategories();
 
     return Scaffold(
       body: SafeArea(

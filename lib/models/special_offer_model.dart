@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class SpecialOfferModel {
   final String name, imagePath;
   final int number;
@@ -7,6 +9,26 @@ class SpecialOfferModel {
     required this.number,
     required this.imagePath,
   });
+
+  factory SpecialOfferModel.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return SpecialOfferModel(
+      name: data?['name'],
+      imagePath: data?['imagePath'],
+      number: data?['number'],
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      "name": name,
+      "imagePath": imagePath,
+      "number": number,
+    };
+  }
 }
 
 List<SpecialOfferModel> specialOffersList = [

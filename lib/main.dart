@@ -1,5 +1,6 @@
 import 'package:ecommerce/controllers/auth_controller.dart';
 import 'package:ecommerce/controllers/expanded_text_controller.dart';
+import 'package:ecommerce/controllers/home_controller.dart';
 import 'package:ecommerce/controllers/product_controller.dart';
 import 'package:ecommerce/screens/cart/cart_screen.dart';
 import 'package:ecommerce/screens/product_details/product_details_screen.dart';
@@ -19,6 +20,7 @@ void main() async {
   Get.lazyPut(() => ProductController(), fenix: true);
   Get.lazyPut(() => ExpandedTextController(), fenix: true);
   Get.lazyPut(() => AuthController(), fenix: true);
+  Get.lazyPut(() => HomeController(), fenix: true);
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

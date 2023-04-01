@@ -16,6 +16,13 @@ class ProductController extends GetxController {
     update();
   }
 
+  int _borderValue = 20;
+  int get borderValue => _borderValue;
+  set borderValue(int value) {
+    _borderValue = value;
+    update();
+  }
+
   void incrementQuantity() {
     productQuantity++;
     update();

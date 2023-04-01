@@ -22,7 +22,7 @@ class CategoryItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: const Color(0xffFFECDF),
           ),
-          child: SvgPicture.asset(iconPath),
+          child: SvgPicture.network(iconPath),
         ),
         const SizedBox(height: 4),
         SizedBox(
